@@ -1,0 +1,44 @@
+{
+  "name": "loyal-promise",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A light and reliable ES5-compliant Promise polyfill",
+  "main": "dist/lp.cjs.js",
+  "files": [
+    "dist/*", 
+    "src/*", 
+    "rollup.config.js", 
+    ".eslintrc.json", 
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=4.4.0"
+  },
+  "scripts": {
+    "test": "npm run test:unit && npm run test:ap && npm run test:es6",
+    "test:ap": "promises-aplus-tests test/aplus_adapter.js",
+    "test:es6": "promises-es6-tests test/es6_adapter.js",
+    "test:unit": "mocha test/unit/*.spec.js",
+    "build": "rollup -c --environment BUILD:prod",
+    "build:dev": "rollup -c",
+    "build:w": "rollup -c -w",
+    "lint": "eslint src"
+  },
+  "keywords": [
+    "es6",
+    "promise",
+    "polyfill"
+  ],
+  "author": "Yuiham Chan",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.0.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.0.0",
+    "promises-aplus-tests": "*",
+    "promises-es6-tests": "*",
+    "rollup": "*",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^2.5.0"
+  }
+}
