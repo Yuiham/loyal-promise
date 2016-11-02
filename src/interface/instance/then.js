@@ -8,19 +8,16 @@ import {
   REJECT_REACTIONS,
   IS_HANDLED,
   FULFILL_FLAG,
-  REJECT_FLAG
-} from '../../internal/constants'
-import {
+  REJECT_FLAG,
   analyzePromise,
   getNewCapability,
   Reaction
-} from '../../internal/operation'
+} from 'internal'
 import {
   getConstructor,
-  valueToString
-} from '../../util/lang'
-import scheduler from '../../util/scheduler'
-import Promise from '../constructor'
+  scheduler
+} from 'util'
+import Promise from '../promise'
 
 /**
  * handle a promise's onFulfilled/onRejected callbacks
@@ -35,7 +32,7 @@ export default function then(onFulfilled, onRejected) {
   var result = analyzePromise(this)
 
   if ( !result.isPromise ) {
-    throw new TypeError(valueToString(this) + ' is not a promise')
+    throw new TypeError(String(this) + ' is not a promise')
   }
 
   var deferred = getNewCapability( getConstructor(this, Promise) )

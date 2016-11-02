@@ -4,8 +4,8 @@ import {
   isConstructor,
   isIterable,
   hasIterator
-} from '../../util/lang'
-import { getNewCapability } from '../../internal/operation'
+} from 'util'
+import { getNewCapability } from 'internal'
 
 /**
  * create a new promise which is settled in the same way as the first passed
@@ -51,7 +51,7 @@ export default function race(iterable) {
  */
 var performRace = hasIterator ? function performRace(iterable, constructor, deferred) {
   var ite = iterable[Symbol.iterator](),
-      step = ite.next()
+    step = ite.next()
 
   if (step.done) {
     return

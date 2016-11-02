@@ -1,5 +1,5 @@
-import { isConstructor } from '../../util/lang'
-import { getNewCapability } from '../../internal/operation'
+import { isConstructor } from 'util'
+import { getNewCapability } from 'internal'
 
 /**
  * reject a promise instance with the argument as the reason

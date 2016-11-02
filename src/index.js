@@ -1,4 +1,4 @@
-import './util/check.js'
-import Promise from './interface/constructor'
+import './check'
+import Promise from './interface/index'
 
 export default Promise

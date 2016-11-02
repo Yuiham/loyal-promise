@@ -1,5 +1,5 @@
-import { isConstructor } from '../../util/lang'
-import { analyzePromise, getNewCapability } from '../../internal/operation'
+import { isConstructor } from 'util'
+import { analyzePromise, getNewCapability } from 'internal'
 
 /**
  * resolve a promise instance with the argument as its value

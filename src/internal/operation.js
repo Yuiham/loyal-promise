@@ -10,7 +10,6 @@ import {
   IS_HANDLED,
   GET_STATE,
   FULFILL_FLAG,
-  REJECT_FLAG,
   CAPABILITY,
   TYPE,
   HANDLER
@@ -21,14 +20,13 @@ import {
 } from './state'
 import { isCycle } from './cycle'
 import {
-  valueToString,
-  isObject, 
+  isObject,
   isPlainObject,
-  isCallable, 
-  isConstructor
-} from '../util/lang'
-import scheduler from '../util/scheduler'
-import Promise from '../interface/constructor'
+  isCallable,
+  isConstructor,
+  scheduler
+} from 'util'
+import Promise from 'promise'
 
 
 /**
@@ -43,7 +41,7 @@ function getNewCapability(constructor) {
   var obj = Object.create(null)
 
   if (!isConstructor(constructor)) {
-    throw new TypeError(valueToString(constructor) + ' is not a constructor')
+    throw new TypeError(String(constructor) + ' is not a constructor')
   }
 
   // assume the function "constructor" is the Promise constructor 
@@ -139,8 +137,8 @@ function resolvePromise(promise, resolution) {
  */
 function resolveThenable(promise, id, thenable, then) {
   var handlers = createResolvingFunctions(promise),
-      resolve = handlers.resolve,
-      reject = handlers.reject
+    resolve = handlers.resolve,
+    reject = handlers.reject
  
   if (isCycle(id, thenable)) {
     reject(new TypeError('Chaining cycle detected for promise'))
@@ -224,9 +222,9 @@ function Reaction(capability, type, callback) {
  */
 Reaction.prototype.handle = function handle(arg) {
   var handler = this[HANDLER],
-      resolve = this[CAPABILITY].resolve,
-      reject = this[CAPABILITY].reject,
-      result
+    resolve = this[CAPABILITY].resolve,
+    reject = this[CAPABILITY].reject,
+    result
 
   if ( !handler ) {
     return this[TYPE] === FULFILL_FLAG ? resolve(arg) : reject(arg)

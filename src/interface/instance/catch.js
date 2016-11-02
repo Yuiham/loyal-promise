@@ -1,5 +1,4 @@
-import { valueToString } from '../../util/lang'
-import { analyzePromise } from '../../internal/operation'
+import { analyzePromise } from 'internal'
 
 /**
  * a catch method which would be called then a promise is rejected 
@@ -12,7 +11,7 @@ import { analyzePromise } from '../../internal/operation'
  */
 export default function caught(onRejected) {
   if ( !analyzePromise(this).isPromise ) {
-    throw new TypeError(valueToString(this) + 'is not a promise')
+    throw new TypeError(String(this) + 'is not a promise')
   }
 
   return this.then(undefined, onRejected)

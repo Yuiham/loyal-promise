@@ -9,11 +9,11 @@ const Promise = require('../dist/lp.cjs')
 const config = require('./aplus_adapter')
 
 module.exports = Object.assign({}, config, {
-    defineGlobalPromise(globalScope) {
-        globalScope.Promise = Promise
-        globalScope.assert = assert
-    },
-    removeGlobalPromise(globalScope) {
-        delete globalScope.Promise
-    }
-}
+  defineGlobalPromise(globalScope) {
+      globalScope.Promise = Promise
+      globalScope.assert = assert
+  },
+  removeGlobalPromise(globalScope) {
+      delete globalScope.Promise
+  }
+})

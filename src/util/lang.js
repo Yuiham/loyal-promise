@@ -40,10 +40,6 @@ function isArguments(x) {
   return getType(x) === '[object Arguments]'
 }
 
-function valueToString(x) {
-  return x === undefined || x === null ? x + '' : x.toString()
-}
-
 /**
  * get the constructor of an object
  *
@@ -76,6 +72,5 @@ export {
   isArguments,
   isIterable,
   hasIterator,
-  valueToString,
   getConstructor
 }

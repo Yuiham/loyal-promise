@@ -4,8 +4,8 @@ import {
   isConstructor,
   isIterable,
   hasIterator
-} from '../../util/lang'
-import { getNewCapability } from '../../internal/operation'
+} from 'util'
+import { getNewCapability } from 'internal'
 
 /**
  * create a new promise which is fulfilled with an array of fulfillment values
@@ -94,8 +94,8 @@ function performAll(iterable, constructor, deferred) {
  */
 var iteratePromises = hasIterator ? function iteratePromises(iterable, constructor, store, deferred) {
   var index = 0,
-      ite = iterable[Symbol.iterator](),
-      step = ite.next()
+    ite = iterable[Symbol.iterator](),
+    step = ite.next()
 
   if (step.done) {
     deferred.resolve(store.valueList)
